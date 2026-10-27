@@ -1,0 +1,33 @@
+Cliente y TelefonoCliente:
+Relación "Tiene" entre Cliente y TelefonoCliente a través de ClienteID.
+
+Producto y MarcaDeCelular:
+Relación "Pertenece a" entre Producto y MarcaDeCelular a través de MarcaID.
+
+Compra y DetalleCompra:
+Relación "Incluye" entre Compra y DetalleCompra a través de CompraID.
+
+DetalleCompra y Producto:
+Relación "Relacionado con" entre DetalleCompra y Producto a través de ProductoID.
+
+Compra y Cliente:
+Relación "Realizada por" entre Compra y Cliente a través de ClienteID.
+
+Empleado y Cargo :
+Relación "Asignado a" entre Empleado y Cargo a través de CargoID.
+
+Proveedor y Producto:
+Relación "Suministra" entre Proveedor y Producto a través de ProveedorID.
+
+
+ODERN PARA CREAR LAS TABLAS :
+
+Empleado
+Cargo
+Proveedor
+MarcaDeCelular
+Producto
+Cliente
+TelefonoCliente
+Compra
+DetalleCompra

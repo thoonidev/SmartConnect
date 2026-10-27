@@ -1,0 +1,74 @@
+Cliente:
+ClienteID (Clave primaria)
+Nombre
+ApellidoPaterno
+ApellidoMaterno
+Dirección
+Teléfono
+Correo electrónico
+
+TelefonoProveedor:
+TelefonoID (Clave primaria)
+ProveedorID (Clave foránea referenciando a Proveedor)
+NumeroTelefono
+
+MarcaDeCelular:
+MarcaID (Clave primaria)
+Nombre
+País de origen
+
+Producto:
+ProductoID (Clave primaria)
+Modelo
+Precio
+Stock
+MarcaID (Clave foránea referenciando a MarcaDeCelular)
+ProveedorID (Clave foránea referenciando a Proveedor)
+
+Compra:
+CompraID (Clave primaria)
+ClienteID (Clave foránea referenciando a Cliente)
+EmpleadoID (Clave foránea referenciando a Empleado)
+FechaCompra
+Total
+
+DetalleCompra:
+DetalleCompraID (Clave primaria)
+CompraID (Clave foránea referenciando a Compra)
+ProductoID (Clave foránea referenciando a Producto)
+Cantidad
+PrecioUnitario
+
+Empleado:
+EmpleadoID (Clave primaria)
+Nombre
+ApellidoPaterno
+ApellidoMaterno
+Teléfono
+Correo electrónico
+CargoID (Clave foránea referenciando a Cargo)
+
+Cargo:
+CargoID (Clave primaria)
+NombreCargo
+
+Proveedor:
+ProveedorID (Clave primaria)
+Nombre
+Dirección
+Correo electrónico  
+
+
+
+ORDEN PARA CREAR LAS TABLAS
+
+CARGO
+PROVEEDOR
+MARCADECELULAR
+CLIENTE
+EMPLEADO
+PRODUCTO
+COMPRA
+DETALLECOMPRA 
+TELEFONOPROVEEDOR
+

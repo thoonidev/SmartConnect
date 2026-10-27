@@ -1,0 +1,138 @@
+La normalización es un proceso en el diseño de bases de datos que ayuda a reducir la redundancia de datos y mejora la integridad y la eficiencia del sistema. Para normalizar una base de datos, seguimos reglas específicas para organizar la información en tablas de manera más eficiente. Aquí te proporcionaré una guía general para llevar la base de datos a la 1FN (Primera Forma Normal), 2FN (Segunda Forma Normal) y 3FN (Tercera Forma Normal) basándonos en el modelo conceptual presentado previamente:
+
+1. Primera Forma Normal (1FN):
+Requisitos:
+
+Todos los atributos deben ser atómicos (indivisibles).
+No debe haber conjuntos repetidos.
+Cambios:
+
+Asegúrate de que cada atributo de cada entidad contenga un solo valor. Por ejemplo, si un cliente tiene múltiples números de teléfono, deberías dividirlos en registros separados.
+2. Segunda Forma Normal (2FN):
+Requisitos:
+
+Debe cumplir con 1FN.
+Cada atributo no clave debe depender completamente de la clave primaria.
+Cambios:
+
+Si hay dependencias parciales, divide las tablas para eliminarlas. Por ejemplo, en la tabla "Compra," asegúrate de que todos los atributos (como "Fecha de compra," "Cantidad," "Total") dependan completamente de la clave primaria (CompraID).
+3. Tercera Forma Normal (3FN):
+Requisitos:
+
+Debe cumplir con 2FN.
+No debe haber dependencias transitivas.
+Cambios:
+
+Si hay dependencias transitivas, divide las tablas para eliminarlas. Por ejemplo, si hay una dependencia transitiva entre "Empleado" y "Cargo," donde "Cargo" depende de "EmpleadoID," crea una tabla separada para "Cargo" y utiliza la clave de esta tabla en lugar de tener el atributo "Cargo" en la tabla "Empleado."
+
+
+
+
+
+Tablas Actualizadas:
+Cliente:
+
+ClienteID (Clave primaria)
+Nombre
+ApellidoPaterno
+ApellidoMaterno
+Dirección
+Correo electrónico
+
+TelefonoCliente:
+
+TelefonoID (Clave primaria)
+ClienteID (Clave foránea referenciando a Cliente)
+NumeroTelefono
+
+MarcaDeCelular:
+
+MarcaID (Clave primaria)
+Nombre
+País de origen
+
+Producto:
+
+ProductoID (Clave primaria)
+Modelo
+Precio
+Stock
+MarcaID (Clave foránea referenciando a MarcaDeCelular)
+
+Compra:
+
+CompraID (Clave primaria)
+ClienteID (Clave foránea referenciando a Cliente)
+FechaCompra
+Total
+
+DetalleCompra:
+
+DetalleCompraID (Clave primaria)
+CompraID (Clave foránea referenciando a Compra)
+ProductoID (Clave foránea referenciando a Producto)
+Cantidad
+PrecioUnitario
+
+Empleado:
+
+EmpleadoID (Clave primaria)
+Nombre
+ApellidoPaterno
+ApellidoMaterno
+Teléfono
+Correo electrónico
+
+Cargo:
+
+CargoID (Clave primaria)
+NombreCargo
+
+EmpleadoCargo:
+
+EmpleadoCargoID (Clave primaria)
+EmpleadoID (Clave foránea referenciando a Empleado)
+CargoID (Clave foránea referenciando a Cargo)
+FechaInicio (si es relevante)
+FechaFin (si es relevante)
+
+Proveedor:
+
+ProveedorID (Clave primaria)
+Nombre
+Dirección
+Teléfono
+Correo electrónico
+
+Relaciones:
+Cliente y TelefonoCliente:
+
+Relación "Tiene" entre Cliente y TelefonoCliente a través de ClienteID.
+
+Producto y MarcaDeCelular:
+
+Relación "Pertenece a" entre Producto y MarcaDeCelular a través de MarcaID.
+
+Compra y DetalleCompra:
+
+Relación "Incluye" entre Compra y DetalleCompra a través de CompraID.
+
+DetalleCompra y Producto:
+
+Relación "Relacionado con" entre DetalleCompra y Producto a través de ProductoID.
+
+Compra y Cliente:
+
+Relación "Realizada por" entre Compra y Cliente a través de ClienteID.
+
+Empleado y EmpleadoCargo:
+
+Relación "Ocupa" entre Empleado y EmpleadoCargo a través de EmpleadoID.
+
+Cargo y EmpleadoCargo:
+
+Relación "Asignado a" entre Cargo y EmpleadoCargo a través de CargoID.
+
+Proveedor y Producto:
+
+Relación "Suministra" entre Proveedor y Producto a través de ProveedorID.
